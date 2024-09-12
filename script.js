@@ -5,7 +5,7 @@ var flag = 0;
 var flag1 = 0;
 
 function validate(event) {
-    event.preventDefault();
+    // event.preventDefault();
     email = document.querySelector('.email');
     password = document.querySelector('.password');
     errorMessages = [];
@@ -15,7 +15,9 @@ function validate(event) {
 
     if (!(email.value.includes('@') && email.value.includes('.'))) {
         errorMessages.push("Email is not valid.");
-        email.style.backgroundColor = "rgba(255, 121, 121, 0.8)";
+        email.style.border = "3px solid red";
+        email.style.color = "red";
+        email.style.backgroundColor = "rgba(255, 146, 146, 0.2)";
         email.focus();
         flag = 1;
     }
@@ -72,5 +74,19 @@ function showError(errorMessage) {
 
 
 function showErrorField(element){
-    element.style.backgroundColor = "rgba(255, 121, 121, 0.8)";
+    element.style.border = "3px solid red";
+    element.style.color = "red";
+    element.style.backgroundColor = "rgba(255, 146, 146, 0.2)";
+    element.onfocus = function() {
+        element.style.border = "3px solid red";
+    };
+}
+
+
+document.querySelector('.email').oninput = function(){
+    document.querySelector('.email').style.color = "black";
+}
+
+document.querySelector('.password').oninput = function(){
+    document.querySelector('.password').style.color = "black";
 }
